@@ -1,12 +1,14 @@
 import './App.css';
 import React,{ useEffect, useState } from 'react';
-import Product from './Product';
-import {root} from './index.js'
+import { useNavigate } from 'react-router-dom';
+// import Product from './Product';
+// import {root} from './index.js'
 function App() {
   const initialValues = {email:"", password:""}
   const [formdata, setFormdata] = useState(initialValues)
   const [errors, setErrors] = useState({})
   // const [submit, setSubmit] = useState(false)
+  const history = useNavigate()
 
   function handleSubmit(event){
       event.preventDefault();
@@ -14,11 +16,13 @@ function App() {
       //setErrors(validation(formdata));
       //setSubmit(true)
       if(Object.keys(errors).length===0){
-        root.render(
-          <React.StrictMode>
-            <Product/>
-          </React.StrictMode>
-        );
+        // root.render(
+        //   <React.StrictMode>
+        //     <Product/>
+        //   </React.StrictMode>
+        // );
+        history('/Product')
+        
         
       }
   }

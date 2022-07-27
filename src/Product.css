@@ -28,3 +28,7 @@ h1{
     max-width: 33%;
     margin:0px
 }
+
+#search{
+  float: right;
+}
