@@ -48,3 +48,8 @@
 #carticon{
   justify-items: end;
 }
+
+#applogo{
+  text-decoration: none;
+  color: black;
+}

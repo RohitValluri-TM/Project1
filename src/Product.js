@@ -5,7 +5,6 @@ import './App.css';
 import './Product.css'
 import { Link} from "react-router-dom";
 import NavBar from "./NavBar";
-import { Dropdown } from "react-bootstrap";
 import { CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem } from "@coreui/react";
 
 

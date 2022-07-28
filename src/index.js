@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Product from './Product';
 import ProductDetails from './Productdetails';
+import Cart from './Cart';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -13,6 +14,7 @@ root.render(
     <Route exact path='/' element={<App/>}/>
     <Route exact path='/Product' element={<Product/>}/>
     <Route exact path='/Productdetails' element={<ProductDetails/>}/>
+    <Route exact path="/Cart" element={<Cart/>}/>
     </Routes>
     </BrowserRouter>
 );
