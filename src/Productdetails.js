@@ -3,9 +3,12 @@ import { useLocation } from 'react-router-dom';
 import NavBar from './NavBar';
 import './Productdetails.css';
 import {FiShoppingCart} from 'react-icons/fi'
+import Cart from './Cart';
 const cartFls = JSON.parse(localStorage.getItem('cart') || '[]')
 const Page_productDetails = 'productDetails';
 const Page_cart = 'cart';
+const emptyCart = 'empty';
+
 
 function ProductDetails() {
   const location = useLocation()
@@ -17,16 +20,20 @@ function ProductDetails() {
   console.log(page, "page")
   console.log(cart[0], "cart")
   
+  
   const cartdata = cart[0];
   console.log(cartdata, "cartdata")
   
   const addtoCart = (item) =>{
-    console.log("added")
+    
     setCart([...cart, {...item}]);
   }
+  
+  console.log(cart, "added")
 
   const removefromCart=(removeItem)=>{
     setCart(cart.filter((item)=>item!==removeItem))
+    console.log(cart, "removedItem")
   }
 
   const navigateTo=(cartpage)=>{
@@ -89,12 +96,15 @@ function ProductDetails() {
       <NavBar />
       <div id="carticon" className='col-8'>
                 <button onClick={()=>navigateTo('cart')}><FiShoppingCart/> {cart.length}</button>
-            </div>
+      </div>
+      <button onClick={()=>navigateTo('productDetails')}>Product Details</button>
+      
          {page === Page_productDetails && 
          <div>
          <h1>ProductDetails</h1>
              <div id="pdcon" className='container'>
                <div className='row'>
+               
                  <div id="pdimgcon" className='col-6'>                                                                     
                    <img id="pdimg" alt="productimg" src={info.images[0]}></img>
                  </div>
@@ -110,26 +120,7 @@ function ProductDetails() {
              </div>
              </div>}
           
-         {page === Page_cart && 
-         <>
-         <h1>Cart</h1>
-         <div id="pdcon" className='container'>
-           <div className='row'>
-             <div id="pdimgcon" className='col-6'>                                                                     
-             <img id="pdimg" alt="productimg" src={cartdata.images[0]}></img>
-                 </div>
-                 <div id="dcon" className='col-6'>
-                   <h2>Product : {cartdata.title}</h2>
-                   <h2>Price : ${cartdata.price}</h2>
-                   <h2>Brand : {cartdata.brand}</h2>
-                   <h2>Rating : {cartdata.rating}</h2>
-               <button onClick={()=>removefromCart(cartdata)}>Remove</button>
-               {/* <button onClick={()=>addtoCart(info)} state={{info:info}}>Add to Cart</button> */}
-             </div> 
-             <div id='cost'><h2>Total Cost : ${totalCost()}</h2></div>
-         </div> 
-         </div>
-         </>}
+         {page === Page_cart && (<Cart cart={cart} removefromCart= {removefromCart} totalCost={totalCost}/>)}
          
     </div>
   )
