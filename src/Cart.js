@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css';
+import AddressForm from './AddressForm';
+import './App.css'
 
 function Cart({cart, removefromCart, totalCost}) {
+
+  const [addressData, setAddressData] = useState('')
+  console.log(addressData, "addressdata")
   return (
     <div>
          <h1>Cart</h1>
@@ -22,6 +30,15 @@ function Cart({cart, removefromCart, totalCost}) {
                   </div>
                  )})}
              <div id='cost'><h2>Total Cost : ${totalCost()}</h2></div>
+             <div>
+             <Popup trigger={<button className='button bt1'>Fill the Address</button>} position="right center">
+              <AddressForm passChildData={setAddressData}/>
+             </Popup>
+             
+             </div>
+             <div>
+              <Link to="/OrderDetails" state={{Orderinfo:cart,address:addressData, cost:totalCost()}}> <button>Place Order</button></Link>
+              </div>
          </div> 
          </div>
     </div>

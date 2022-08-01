@@ -44,7 +44,9 @@ function ProductDetails() {
     return cart.reduce((sum, {price})=>sum+price, 0)
   }
 
-  
+  // useEffect(()=>{
+  //   removefromCart();
+  // }, [])
   useEffect(()=>{
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart])

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Product from './Product';
 import ProductDetails from './Productdetails';
 import Cart from './Cart';
+import OrderDetails from './OrderDetails';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -15,6 +16,7 @@ root.render(
     <Route exact path='/Product' element={<Product/>}/>
     <Route exact path='/Productdetails' element={<ProductDetails/>}/>
     <Route exact path="/Cart" element={<Cart/>}/>
+    <Route exact path='/OrderDetails' element={<OrderDetails/>}/>
     </Routes>
     </BrowserRouter>
 );

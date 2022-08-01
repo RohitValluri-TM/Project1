@@ -3,9 +3,11 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     height:auto;
+    max-width: 100%;
 }
 #pdimg{
     padding: 15px;
+    max-width: 100%;
 }
 #pdcon{
     margin-top: 20%;
