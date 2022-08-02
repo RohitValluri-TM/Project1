@@ -2,7 +2,7 @@
     font-size: 60px;
     max-width: 20%;
     padding: 30px;
-    margin-left: 40px;
+    margin: 40px;
     font-family: Arial, Helvetica, sans-serif;
     background: #b7c6f1;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
@@ -44,3 +44,47 @@
     color: white;
     font-family: Montserrat;
   }
+
+#tcost{
+  margin:60px;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bolder;
+}
+
+button{
+  background:#1AAB8A;
+  color:#fff;
+  border-style: none;
+  border-radius: 4px;
+  position:relative;
+  /* height:60px; */
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}

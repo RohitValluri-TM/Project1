@@ -1,6 +1,5 @@
 import React from 'react'
 import {AiTwotoneShopping} from 'react-icons/ai'
-import {FiShoppingCart} from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import './App.css'
 function NavBar() {
@@ -9,9 +8,6 @@ function NavBar() {
         <div className='row'>
             <div className='col-2'>
             <Link id="applogo" to="/Product"><AiTwotoneShopping/>ShopCart</Link>
-            </div>
-            <div id="carticon" className='col-8'>
-                <FiShoppingCart/>
             </div>
         </div>
         </div>

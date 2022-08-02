@@ -1,5 +1,6 @@
 import React from 'react'
 import {useLocation} from 'react-router-dom';
+import NavBar from './NavBar';
 import './OrderDetails.css';
 
 function OrderDetails() {
@@ -10,7 +11,9 @@ function OrderDetails() {
     console.log(address, "ytu")
   return (
     <div>
-        <h1>Order Placed</h1>
+        <NavBar/>
+        <h1 id="tcost">Order Placed</h1>
+        
         <div className='addressCard'>
             <h3>Shipping Address</h3>
             <h5>Deliver to : {address.firstname} {address.lastname}</h5>
@@ -19,6 +22,7 @@ function OrderDetails() {
             <h5>State : {address.State}</h5>
             <h5>Zip Code : {address.Zip}</h5>
         </div>
+        <div className='container-fluid'>
        {Orderinfo.map((item, id)=>{
         return(
             <div key={id}>
@@ -27,7 +31,7 @@ function OrderDetails() {
                     <img id="pdimg" alt="productimg" src={item.images[0]}></img>
                 </div>
                 <div className='right'>
-                <div class="product-info">
+                <div className="product-info">
                     <h2>Product : {item.title}</h2>
                     <h2>Price : ${item.price}</h2>
                     <h2>Brand : {item.brand}</h2>
@@ -37,8 +41,8 @@ function OrderDetails() {
             </div>
           </div>
           
-       )})}
-       <div><h2>Total Cost : $ {cost}</h2></div>
+       )})}</div>
+       <h3 id="tcost">Total Cost : $ {cost}</h3>
     </div>
   )
 }

@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import NavBar from './NavBar';
 import './Productdetails.css';
+import './OrderDetails.css';
 import {FiShoppingCart} from 'react-icons/fi'
 import Cart from './Cart';
 const cartFls = JSON.parse(localStorage.getItem('cart') || '[]')
 const Page_productDetails = 'productDetails';
 const Page_cart = 'cart';
-const emptyCart = 'empty';
-
 
 function ProductDetails() {
   const location = useLocation()
@@ -25,8 +24,8 @@ function ProductDetails() {
   console.log(cartdata, "cartdata")
   
   const addtoCart = (item) =>{
-    
     setCart([...cart, {...item}]);
+    window.location.reload()
   }
   
   console.log(cart, "added")
@@ -34,6 +33,7 @@ function ProductDetails() {
   const removefromCart=(removeItem)=>{
     setCart(cart.filter((item)=>item!==removeItem))
     console.log(cart, "removedItem")
+    window.location.reload()
   }
 
   const navigateTo=(cartpage)=>{
@@ -105,19 +105,20 @@ function ProductDetails() {
          <div>
          <h1>ProductDetails</h1>
              <div id="pdcon" className='container'>
-               <div className='row'>
-               
-                 <div id="pdimgcon" className='col-6'>                                                                     
+                 <div id="pdimgcon" >  
+                 <div className='left'>                                                                   
                    <img id="pdimg" alt="productimg" src={info.images[0]}></img>
                  </div>
-                 <div id="dcon" className='col-6'>
+                 <div className='right'>
+                <div className="product-info">
                    <h2>Product : {info.title}</h2>
                    <h2>Price : ${info.price}</h2>
                    <h2>Brand : {info.brand}</h2>
                    <h2>Rating : {info.rating}</h2>
-                   <button onClick={()=>addtoCart(info)}>Add to Cart</button>
+                   <button id="wrapper" onClick={()=>addtoCart(info)}>Add to Cart</button>
                    {/* <button onClick={()=>addtoCart(info)} state={{info:info}}>Add to Cart</button> */}
                  </div> 
+                 </div>
              </div> 
              </div>
              </div>}

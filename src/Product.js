@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import axios from 'axios';
 import productData from './products.json'
 import './App.css';
@@ -62,6 +62,8 @@ export default function Product(){
         // setCopy([...response.data.products])
         // console.log(copy, "copy")
     }
+
+    
     
     useEffect(()=>{
         
@@ -84,6 +86,7 @@ export default function Product(){
         <>
         <NavBar/>
         <h1>Products</h1>
+        <Link to="/CreateProduct"><button>Add Product</button></Link>
         <input id="search" placeholder="Search Products..." onChange={(e)=>setSearch(e.target.value)}></input>
         <input type="checkbox" onClick={()=>filter('smartphones')}></input>
         <label>Smartphones</label><br/>

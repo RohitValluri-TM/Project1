@@ -8,6 +8,7 @@ import Product from './Product';
 import ProductDetails from './Productdetails';
 import Cart from './Cart';
 import OrderDetails from './OrderDetails';
+import CreateProduct from './CreateProduct';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -17,6 +18,7 @@ root.render(
     <Route exact path='/Productdetails' element={<ProductDetails/>}/>
     <Route exact path="/Cart" element={<Cart/>}/>
     <Route exact path='/OrderDetails' element={<OrderDetails/>}/>
+    <Route exact path='/CreateProduct' element={<CreateProduct/>}/>
     </Routes>
     </BrowserRouter>
 );
