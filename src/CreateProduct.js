@@ -1,60 +1,71 @@
 import React, {useRef} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function CreateProduct() {
 
+    const navigateTo=useNavigate()
+    
+    const refer = {id:useRef(null), title:useRef(''), description:useRef(''), price:useRef(''),
+                    discountPercentage:useRef(''), rating:useRef(''), stock:useRef(''),
+                    brand:useRef(''), category:useRef(''), thumbnail:useRef(""), images:useRef('')}
+   
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-    }
 
-    const ref = {id:useRef(null), title:useRef(''), description:useRef(''), price:useRef(null),
-                    discountPercentage:useRef(null), rating:useRef(''), stock:useRef(''),
-                    brand:useRef(''), category:useRef(''), thumbnail:useRef(""), images:useRef('')}
-    // const [addprod, setAddProd] = useState(ref)
-    const createProduct=()=>{
+        const json = {
+            id: refer.id.current.value,
+            title: refer.title.current.value,
+            description: refer.description.current.value,
+            price: refer.price.current.value,
+            rating: refer.rating.current.value,
+            stock: refer.stock.current.value,
+            brand:refer.brand.current.value,
+            category: refer.category.current.value,
+            thumbnail: refer.thumbnail.current.value,
+            images: refer.images.current.value,
+            
+        }
+        
+        
         fetch('https://dummyjson.com/products/add', {
             method:'POST',
             headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({
-                id:ref.id.current.value,
-                title:ref.title.current.value,
-                description:ref.description.current.value,
-                price:ref.price.current.value,
-                discountPercentage:ref.discountPercentage.current.value,
-                rating:ref.rating.current.value,
-                stock:ref.stock.current.value,
-                category:ref.category.current.value,
-                thumbnail:ref.thumbnail.current.value,
-                images:ref.images.current.value,
-            })
-            .then(res=>res.json())
-            .then(console.log, "nproduct")
+            body:JSON.stringify(json)
         })
+        .then(res=>res.json())
+        .then(console.log, "nproduct")
+        navigateTo('/Product')
+        // console.log(id, "nid")
+        // console.log(json.id, "nid")
     }
+    
   return (
     <div>
         <h1>CreateProduct</h1>
         <form onSubmit={handleSubmit}>
             <label>Id : </label>
-            <input type="text" ref={id}></input>
+            <input type="text" ref={refer.id}></input>
             <label>Title : </label>
-            <input type="text" ref={title}></input>
+            <input type="text" ref={refer.title}></input>
             <label>Description : </label>
-            <input type="text" ref={description}></input>
+            <input type="text" ref={refer.description}></input>
             <label>Price : </label>
-            <input type="number" ref={price}></input>
+            <input type="number" ref={refer.price}></input>
             <label>Discount Percentage : </label>
-            <input type="number" ref={discountPercentage}></input>
+            <input type="number" ref={refer.discountPercentage}></input>
             <label>Rating : </label>
-            <input type="number" ref={rating}></input>
+            <input type="number" ref={refer.rating}></input>
             <label>Stock : </label>
-            <input type="number" ref={stock}></input>
+            <input type="number" ref={refer.stock}></input>
+            <label>Brand : </label>
+            <input type="text" ref={refer.brand}></input>
             <label>Category : </label>
-            <input type="text" ref={category}></input>
+            <input type="text" ref={refer.category}></input>
             <label>thumbnail : </label>
-            <input type="text" ref={thumbnail}></input>
+            <input type="text" ref={refer.thumbnail}></input>
             <label>Images : </label>
-            <input type="text" ref={images}></input>
+            <input type="text" ref={refer.images}></input>
             <button type='submit'>Add Product</button>
         </form>
     </div>
